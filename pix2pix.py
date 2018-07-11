@@ -503,7 +503,6 @@ def save_images(fetches, step=None):
             out_path = os.path.join(image_dir, filename)
             Image(out_path)
             contents = fetches[kind][i]
-            plt.imshow(contents)
             with open(out_path, "wb") as f:
                 f.write(contents)
         filesets.append(fileset)
