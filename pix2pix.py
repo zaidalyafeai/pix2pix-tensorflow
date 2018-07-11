@@ -12,7 +12,8 @@ import random
 import collections
 import math
 import time
-from IPython.display import Image 
+import matplotlib.pyplot as plt 
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--input_dir", help="path to folder containing images")
 parser.add_argument("--mode", required=True, choices=["train", "test", "export"])
@@ -501,8 +502,10 @@ def save_images(fetches, step=None):
                 filename = "%08d-%s" % (step, filename)
             fileset[kind] = filename
             out_path = os.path.join(image_dir, filename)
-            Image(out_path)
+            
             contents = fetches[kind][i]
+            plt.imshow(contents)
+            plt.show()
             with open(out_path, "wb") as f:
                 f.write(contents)
         filesets.append(fileset)
